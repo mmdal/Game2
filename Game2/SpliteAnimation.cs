@@ -25,11 +25,13 @@ namespace Game2
         int numOfFrameV;
         int numOfFrameTotal;
         int currentFrame;
-        int width;
-        int height;
         int frameWidth;
         int frameHeight;
         bool looping;
+
+        bool HFlip;
+        bool VFlip;
+
 
         public SpliteAnimation(ContentManager Content_, string assetName_, float frameSpeed_
             ,int numOfFrameH_, int numOfFrameV_, int numOfFrameTotal_, bool looping_ )
@@ -45,6 +47,9 @@ namespace Game2
             frameHeight = animation.Height / numOfFrameV_;
             position = new Vector2(0, 0);
             elapsed = 0f;
+
+            HFlip = false;
+            VFlip = false;
         }   
 
         public void PlayAnitmation( GameTime gameTime )
@@ -68,15 +73,27 @@ namespace Game2
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(animation, position, sourceRect, Color.White, 0f, new Vector2( 0f, 0f ), 1f, SpriteEffects.None, 1f );
+            SpriteEffects spriteEffect = HFlip ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            spriteBatch.Draw(animation, position, sourceRect, Color.White,   0f, new Vector2( 0f, 0f ), 1f, spriteEffect, 1f );
             //spriteBatch.Draw(animation, position, sourceRect, new Color(255f,255f,255f,255f), 0f, new Vector2(0, 0), SpriteEffects.None, 1f);
         }
 
         public Vector2 Position
         {
             get { return this.position; }
-            set { this.position = value; }
+            set {
+                if (HFlip && this.position.X > value.X) HFlip = false;
+                if (!HFlip && this.position.X < value.X) HFlip = true;
+                this.position = value;
+            }
         }
+
+        public Texture2D Animation
+        {
+            get { return animation; }
+            set { this.animation = value; }
+        }
+
 
         public void SetPos( Vector2 pos )
         {

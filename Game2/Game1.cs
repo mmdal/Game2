@@ -40,7 +40,7 @@ namespace Game2
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            charSprite = new SpliteAnimation(Content, "1.png", 100f, 3, 1, 3, false);
+            charSprite = new SpliteAnimation(Content, "1.png", 100f, 3, 1, 3, true);
             // TODO: use this.Content to load your game content here
         }
 
@@ -62,6 +62,23 @@ namespace Game2
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            int OffsetX = 0;
+            int OffsetY = 0;
+
+            if ( Keyboard.GetState().IsKeyDown( Keys.Right ) )
+            {
+                OffsetX = 1;
+            }
+            else if ( Keyboard.GetState().IsKeyDown(Keys.Left) )
+            {
+
+                OffsetX = -1;
+                
+            }
+
+            charSprite.Position = new Vector2(charSprite.Position.X + OffsetX, charSprite.Position.Y + OffsetY);
+
 
             // TODO: Add your update logic here
             charSprite.PlayAnitmation(gameTime);

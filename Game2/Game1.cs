@@ -12,6 +12,7 @@ namespace Game2
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpliteAnimation charSprite;
+        Texture2D attackAni;
 
         public Game1()
         {
@@ -28,7 +29,7 @@ namespace Game2
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            
             base.Initialize();
         }
 
@@ -41,6 +42,7 @@ namespace Game2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             charSprite = new SpliteAnimation(Content, "1.png", 100f, 3, 1, 3, true);
+            attackAni = Content.Load<Texture2D>("2.png");
             // TODO: use this.Content to load your game content here
         }
 
@@ -72,10 +74,23 @@ namespace Game2
             }
             else if ( Keyboard.GetState().IsKeyDown(Keys.Left) )
             {
-
                 OffsetX = -1;
-                
             }
+            if ( Keyboard .GetState().IsKeyDown( Keys.Up ) )
+            {
+                OffsetY = -1;
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+                OffsetY = 1;
+            }
+
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                charSprite.Animation = attackAni;
+            }
+            else charSprite.SetBase();
 
             charSprite.Position = new Vector2(charSprite.Position.X + OffsetX, charSprite.Position.Y + OffsetY);
 

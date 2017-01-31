@@ -23,3 +23,7 @@ c:\users\mmdal\documents\visual studio 2015\Projects\Game2\Game2\bin\Windows\x86
 c:\users\mmdal\documents\visual studio 2015\Projects\Game2\Game2\obj\x86\Debug\Game2.csprojResolveAssemblyReference.cache
 c:\users\mmdal\documents\visual studio 2015\Projects\Game2\Game2\obj\x86\Debug\Game2.exe
 c:\users\mmdal\documents\visual studio 2015\Projects\Game2\Game2\obj\x86\Debug\Game2.pdb
+C:\Users\mmdal\documents\visual studio 2015\Projects\Game2\Game2\obj\x86\Debug\Game2.Properties.Resources.resources
+C:\Users\mmdal\documents\visual studio 2015\Projects\Game2\Game2\obj\x86\Debug\Game2.csproj.GenerateResource.Cache
+C:\Users\mmdal\documents\visual studio 2015\Projects\Game2\Game2\bin\Windows\x86\Debug\Content\1.png
+C:\Users\mmdal\documents\visual studio 2015\Projects\Game2\Game2\bin\Windows\x86\Debug\Content\2.png

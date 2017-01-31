@@ -16,6 +16,7 @@ namespace Game2
     class SpliteAnimation
     {
         Texture2D animation;
+        Texture2D baseAnimation;
         Rectangle sourceRect;
         Vector2 position;
 
@@ -42,7 +43,8 @@ namespace Game2
             this.numOfFrameTotal = numOfFrameTotal_;
 
             this.looping    = looping_;
-             this.animation = Content_.Load<Texture2D>(assetName_);
+            this.animation = Content_.Load<Texture2D>(assetName_);
+            this.baseAnimation = this.animation;
             frameWidth = animation.Width / numOfFrameH_;
             frameHeight = animation.Height / numOfFrameV_;
             position = new Vector2(0, 0);
@@ -91,7 +93,12 @@ namespace Game2
         public Texture2D Animation
         {
             get { return animation; }
-            set { this.animation = value; }
+            set {
+                this.animation = value;
+
+                frameWidth = animation.Width / numOfFrameH;
+                frameHeight = animation.Height / numOfFrameV;
+            }
         }
 
 
@@ -106,6 +113,14 @@ namespace Game2
             position.Y = y;
             return position;
         }
-  
+
+        public void SetBase()
+        {
+            animation = baseAnimation;
+
+            frameWidth = animation.Width / numOfFrameH;
+            frameHeight = animation.Height / numOfFrameV;
+        }
+
     }
 }
